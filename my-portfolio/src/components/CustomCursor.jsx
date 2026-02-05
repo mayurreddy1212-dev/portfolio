@@ -4,10 +4,12 @@ const lerp = (start, end, amt) => start + (end - start) * amt;
 
 const CustomCursor = () => {
   const cursorRef = useRef(null);
+
   const mouse = useRef({ x: 0, y: 0 });
   const pos = useRef({ x: 0, y: 0 });
-  const size = useRef(20); // initial small size
-  const targetSize = useRef(20);
+
+  const size = useRef(18);        // current size
+  const targetSize = useRef(18);  // size based on scroll
 
   const [clicked, setClicked] = useState(false);
 
@@ -27,8 +29,8 @@ const CustomCursor = () => {
 
       const progress = Math.min(scrollY / maxScroll, 1);
 
-      // size grows with scroll
-      targetSize.current = 20 + progress * 50; // 20px → 70px
+      // Cursor grows as user scrolls
+      targetSize.current = 18 + progress * 50; // 18px → ~68px
     };
 
     window.addEventListener("mousemove", move);
@@ -38,9 +40,11 @@ const CustomCursor = () => {
 
     let rafId;
     const animate = () => {
-      pos.current.x = lerp(pos.current.x, mouse.current.x, 0.05);
-      pos.current.y = lerp(pos.current.y, mouse.current.y, 0.05);
+      // smooth lag follow
+      pos.current.x = lerp(pos.current.x, mouse.current.x, 0.06);
+      pos.current.y = lerp(pos.current.y, mouse.current.y, 0.06);
 
+      // smooth size change
       size.current = lerp(size.current, targetSize.current, 0.08);
 
       if (cursorRef.current) {
@@ -48,6 +52,7 @@ const CustomCursor = () => {
 
         cursorRef.current.style.width = `${finalSize}px`;
         cursorRef.current.style.height = `${finalSize}px`;
+
         cursorRef.current.style.transform = `translate3d(
           ${pos.current.x - finalSize / 2}px,
           ${pos.current.y - finalSize / 2}px,
@@ -79,9 +84,32 @@ const CustomCursor = () => {
         borderRadius: "50%",
         pointerEvents: "none",
         zIndex: 9999,
+
+        // ultra-soft transparent glow
         background: clicked
-          ? "radial-gradient(circle, #ff9a9e 0%, rgba(255,154,158,0.4) 40%, rgba(255,154,158,0.1) 70%, transparent 100%)"
-          : "radial-gradient(circle, #d6b89c 0%, rgba(214,184,156,0.5) 40%, rgba(214,184,156,0.15) 70%, transparent 100%)",
+          ? `
+            radial-gradient(
+              circle,
+              transparent 35%,
+              rgba(214, 184, 156, 0.45) 45%,
+              rgba(214, 184, 156, 0.25) 60%,
+              rgba(214, 184, 156, 0.08) 72%,
+              transparent 85%
+            )
+          `
+          : `
+            radial-gradient(
+              circle,
+              rgba(214, 184, 156, 0.30) 0%,
+              rgba(214, 184, 156, 0.79) 35%,
+              rgba(214, 184, 156, 0.51) 55%,
+              rgba(214, 184, 156, 0.05) 70%,
+              transparent 85%
+            )
+          `,
+
+        // tiny blur for luxury feel
+        filter: "blur(0.4px)",
       }}
     />
   );

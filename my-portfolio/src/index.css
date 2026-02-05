@@ -17,3 +17,7 @@ h1,h2{
 * {
   cursor: none;
 }
+
+html {
+  scroll-behavior: smooth;
+}
