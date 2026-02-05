@@ -9,15 +9,13 @@ const Navbar = () => {
   return (
     <>
       {/* Top bar */}
-      <div className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6">
-        {/* Logo */}
-        <img  
+      <div className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-1">
+        <img
           src={logo}
           alt="Logo"
-          className="h-18 w-auto select-none"
+          className="h-10 w-auto select-none"
         />
 
-        {/* Toggle button */}
         <button
           onClick={() => setOpen((prev) => !prev)}
           className="text-sm uppercase tracking-widest"
@@ -28,11 +26,8 @@ const Navbar = () => {
 
       {/* Overlay */}
       <div
-        className={`
-          fixed inset-0 z-40
-          transition-opacity duration-300
-          ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
-        `}
+        className={`fixed inset-0 z-40 transition-opacity duration-500 ease-out
+        ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       >
         {/* Background */}
         <div
@@ -41,14 +36,25 @@ const Navbar = () => {
         />
 
         {/* Menu content */}
-        <div className="relative h-full flex items-center justify-center">
+        <div
+          className={`relative h-full flex items-center justify-center
+          transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
+          ${open ? "translate-y-0" : "translate-y-20"}`}
+        >
           <nav className="flex flex-col gap-8 text-3xl font-light tracking-wide">
-            {links.map((item) => (
+            {links.map((item, i) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
                 onClick={() => setOpen(false)}
-                className="hover:opacity-60 transition-opacity"
+                className={`transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
+                ${open
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                }`}
+                style={{
+                  transitionDelay: `${i * 120}ms`,
+                }}
               >
                 {item}
               </a>
