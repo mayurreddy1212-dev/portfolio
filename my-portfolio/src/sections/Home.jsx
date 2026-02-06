@@ -62,13 +62,13 @@ const Home = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-between px-16 text-white overflow-hidden bg-black/50"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(168,139,255,0.35),transparent_45%)]" />
+      <div className="absolute inset-19 bg-[radial-gradient(circle_at_left,rgba(168,139,255,0.35),transparent_45%)]" />
 
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 max-w-xl"
+        className="relative z-10 max-w-xl pl-20"
       >
         <motion.p variants={itemUp} className="text-[#b8a1ff] text-lg mb-3">
           Hello, I am

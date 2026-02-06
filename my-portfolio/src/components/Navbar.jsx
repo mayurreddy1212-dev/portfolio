@@ -9,13 +9,15 @@ const Navbar = () => {
   return (
     <>
       {/* Top bar */}
-      <div className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-1">
+      <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-10 py-4">
+        {/* Logo */}
         <img
           src={logo}
           alt="Logo"
-          className="h-10 w-auto select-none"
+          className="h-12 w-auto select-none"
         />
 
+        {/* Menu button */}
         <button
           onClick={() => setOpen((prev) => !prev)}
           className="text-sm uppercase tracking-widest"
