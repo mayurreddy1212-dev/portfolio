@@ -6,19 +6,19 @@ const testimonials = [
     name: "Yash",
     role: "Associate Engineer, Tech Mahindra",
     feedback:
-      "Good performance, is dedicated to work",
+      "Good",
   },
   {
     name: "Neeraj",
     role: "Associate Engineer, Tech Mahidra",
     feedback:
-      "Nice, Hardworking and a good student",
+      "Excellent",
   },
   {
     name: "Swami Panjala",
     role: "CEO, Elite Softwares",
     feedback:
-      "fast learner grasps and impements things quickly",
+      "Excellent",
   },
 ];
 
@@ -37,7 +37,7 @@ const TestimonialsSection = () => {
   }, [hovered]);
 
   return (
-    <section className="relative min-h-screen bg-black/60 text-white flex items-center justify-center overflow-hidden">
+    <section id="testimonials" className="relative min-h-screen bg-black/60 text-white flex items-center justify-center overflow-hidden">
       <h2 className="absolute top-16 text-4xl font-semibold tracking-wide">
         Testimonials
       </h2>
