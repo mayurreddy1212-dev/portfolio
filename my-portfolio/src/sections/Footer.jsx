@@ -31,7 +31,7 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="min-h-[100vh] flex flex-col items-center justify-center gap-12 overflow-hidden"
+      className="min-h-[100vh] flex flex-col items-center justify-center gap-12 overflow-hidden bg-black/50"
     >
       {/* Animated text */}
       <h2 className="text-4xl md:text-6xl font-light tracking-wide text-center">
