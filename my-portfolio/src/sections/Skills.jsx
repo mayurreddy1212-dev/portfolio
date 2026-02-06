@@ -51,7 +51,7 @@ const Skills = () => {
     <section
       ref={ref}
       id="skills"
-      className="relative h-[180vh] flex items-center justify-center bg-black/60 text-white overflow-hidden"
+      className="relative h-[180vh] flex items-center justify-center bg-black/70 text-white overflow-hidden"
     >
       <h2 className="absolute top-24 text-4xl font-bold text-[#b8a1ff]">
         My Skills
