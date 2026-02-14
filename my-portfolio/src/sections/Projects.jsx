@@ -6,7 +6,7 @@ import p2Img from "../assets/p2.png";
 import p3Img from "../assets/p3.png";
 
 const projects = [
-  { title: "Employee Management System", subtitle: "Basic chatbot created using flask and sqlite", image: p1Img, link: "" },
+  { title: "Employee Management System", subtitle: "Basic chatbot created using flask and sqlite", image: p1Img, link: "https://ems-frontend-pi-five.vercel.app/" },
   { title: "Company Management System", subtitle: "CMS with AI features", image: p2Img, link: "" },
   { title: "Advanced Chatbot", subtitle: "Advanced Chatbot with FastAPI, React. has multiple models", image: p3Img, link: "" },
 ];

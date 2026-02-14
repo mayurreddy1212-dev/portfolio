@@ -3,11 +3,8 @@ import { useEffect, useState } from "react";
 
 const words = [
   { main: "WELCOME", sub: "ENGLISH" },
+   { main: "ようこそ", sub: "JAPANESE" },
   { main: "स्वागतम्", sub: "HINDI" },
-  { main: "BIENVENUE", sub: "FRENCH" },
-  { main: "WILLKOMMEN", sub: "GERMAN" },
-  { main: "ようこそ", sub: "JAPANESE" },
-  { main: "환영합니다", sub: "KOREAN" },
 ];
 
 const Intro = ({ onFinish }) => {
@@ -21,7 +18,7 @@ const Intro = ({ onFinish }) => {
     const timer = setTimeout(() => {
       setShow(false);
       onFinish();
-    }, total + 100);
+    }, total + 10);
 
     return () => clearTimeout(timer);
   }, [onFinish]);
